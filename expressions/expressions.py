@@ -1,8 +1,11 @@
+"""Do stuff."""
 from functools import singledispatch
 import numbers
 
 
 class Expression:
+    """Do stuff."""
+
     def __init__(self, *operands) -> None:
         self.operands = operands
 
@@ -78,6 +81,8 @@ class Expression:
 
 
 class Operator(Expression):
+    """Do stuff."""
+
     def __repr__(self) -> str:
         return type(self).__name__ + repr(self.operands)
 
@@ -91,31 +96,43 @@ class Operator(Expression):
 
 
 class Add(Operator):
+    """Do stuff."""
+
     precedence = 0
     symbol = "+"
 
 
 class Sub(Operator):
+    """Do stuff."""
+
     precedence = 0
     symbol = "-"
 
 
 class Mul(Operator):
+    """Do stuff."""
+
     precedence = 1
     symbol = "*"
 
 
 class Div(Operator):
+    """Do stuff."""
+
     precedence = 1
     symbol = "/"
 
 
 class Pow(Operator):
+    """Do stuff."""
+
     precedence = 2
     symbol = "^"
 
 
 class Terminal(Expression):
+    """Do stuff."""
+
     precedence = 3
 
     def __init__(self, value):
@@ -130,6 +147,8 @@ class Terminal(Expression):
 
 
 class Number(Terminal):
+    """Do stuff."""
+
     def __init__(self, value):
         if not isinstance(value, numbers.Number):
             raise TypeError("Value passed to Number should be a number.")
@@ -137,6 +156,8 @@ class Number(Terminal):
 
 
 class Symbol(Terminal):
+    """Do stuff."""
+
     def __init__(self, value):
         if not isinstance(value, str):
             raise TypeError("Value passed to Symbol should be a string.")
@@ -144,6 +165,7 @@ class Symbol(Terminal):
 
 
 def postvisitor(expr: Expression, fn, **kwargs):
+    """Do stuff."""
     stack = []
     visited = {}
     stack.append(expr)
@@ -163,6 +185,7 @@ def postvisitor(expr: Expression, fn, **kwargs):
 
 @singledispatch
 def differentiate(expr: Expression, *o, **kwargs):
+    """Do stuff."""
     raise NotImplementedError(f"Cannot differentiate {type(expr).__name__}")
 
 
